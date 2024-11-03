@@ -1,0 +1,68 @@
+<div class="container">
+    
+    <h1>Add Product</h1>
+    <form [formGroup]="addForm" (ngSubmit)="handleSubmit()">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+        />
+        @if(title?.touched && title?.hasError('required')){
+            <small class="text-danger">Title is required</small>
+          }
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          formControlName="price"
+        />
+        @if(price?.touched && price?.hasError('min')){
+            <small class="text-danger">Price is required min 1 number</small>
+          }
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          formControlName="image"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          formControlName="description"
+        />
+        @if(description?.touched && description?.hasError('required')){
+            <small class="text-danger">Description is required</small>
+          }
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <!-- <input
+          type="text"
+          class="form-control"
+          id="category"
+          formControlName="category"
+        />
+        @if(category?.touched && category?.hasError('required')){
+            <small class="text-danger">Category is required</small>
+          } -->
+          <select class="form-select" aria-label="Default select example" formControlName="category">
+            <option value="Comics">Điện thoại</option>
+            <option value="Legend">Máy tính</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>

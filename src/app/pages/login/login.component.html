@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class="text-center my-2">Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="email"
+        />
+        @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+        <small id="emailHelp" class="text-danger"> Email Error </small>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          formControlName="password"
+        />
+        @if(loginForm.get('password')?.invalid &&
+        loginForm.get('password')?.touched) {
+        <small id="emailHelp" class="text-danger"> Password Error </small>
+        }
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="loginForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
